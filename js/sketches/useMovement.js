@@ -41,19 +41,21 @@ const loadPrevious = () => {
   gfx.image(previous_gfx, 0, 0);
 };
 
-const SIZE = 500;
+const SIZE = 1;
 const FIDELITY = 5;
 const drawNextFrame = (p) => {
+  let minDimension = p.windowWidth > p.windowHeight ? p.windowHeight : p.windowWidth;
+  let scaledRadius = (minDimension * SIZE) / 2;
   gfx.fill(0, 0, 100);
   gfx.beginShape();
   for (let i = 0; (i * FIDELITY) <= 360; i++) {
     let unitX = gfx.cos(i * FIDELITY);
     let unitY = gfx.sin(i * FIDELITY);
     let radius = gfx.noise(
-      (SIZE + unitX) * 0.7,
-      (SIZE + unitY) * 0.7,
+      (scaledRadius + unitX) * 0.7,
+      (scaledRadius + unitY) * 0.7,
       p.frameCount * 0.05,
-    ) * SIZE;
+    ) * scaledRadius;
     gfx.vertex(
       radius * unitX,
       radius * unitY,
