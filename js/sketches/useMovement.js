@@ -40,14 +40,14 @@ const loadPrevious = () => {
   gfx.image(previous_gfx, 0, 0);
 };
 
-const SIZE = 0.7;
+const SIZE = 1.2;
 const FIDELITY = 360 / 360; // 360 / desired_number_of_walls
 const NOISE_INTENSITY = 0.7;
 const drawNextFrame = (p) => {
   let minDimension = p.windowWidth > p.windowHeight ? p.windowHeight : p.windowWidth;
   let scaledRadius = (minDimension * SIZE) / 2;
   gfx.beginShape();
-  gfx.fill(p.frameCount, 100, 50, 0.1);
+  gfx.fill(p.frameCount % 360, 100, 50, 0.1);
   for (let i = 0; (i * FIDELITY) <= 360; i++) {
     let unitX = gfx.cos(i * FIDELITY);
     let unitY = gfx.sin(i * FIDELITY);
@@ -73,10 +73,12 @@ const storeCurrentFrames = (p) => {
   previous_gfx.image(gfx, ...offset(p));
 };
 
-const UNIT_DISTANCE = 10;
+const UNIT_DISTANCE = 7;
 const offset = (p) => {
-  let xOffset = UNIT_DISTANCE * p.sin(p.frameCount * 0.6);
-  let yOffset = UNIT_DISTANCE * p.cos(p.frameCount * 0.6);
+  // let xOffset = UNIT_DISTANCE * p.sin(p.frameCount * 0.3);
+  let xOffset = 0;
+  // let yOffset = UNIT_DISTANCE * p.cos(p.frameCount * 0.3);
+  let yOffset = -UNIT_DISTANCE;
   // bitwise or, rounding offsets to avoid blurring
   return [xOffset | 0, yOffset | 0];
 }; 
