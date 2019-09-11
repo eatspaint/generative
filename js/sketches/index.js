@@ -4,6 +4,7 @@ import { useMoire } from './useMoire';
 import { useWaves } from './useWaves';
 import { useWavesMoving } from './useWavesMoving';
 import { useMovement } from './useMovement';
+import { useSand } from './useSand';
 
 export {
   useColorFire,
@@ -12,4 +13,5 @@ export {
   useWaves,
   useWavesMoving,
   useMovement,
+  useSand,
 }

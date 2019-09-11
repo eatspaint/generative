@@ -1,9 +1,9 @@
 import p5 from 'p5';
 
-import { useMovement } from './sketches';
+import { useSand } from './sketches';
 
 const sketch = (p) => {
-  const [setup, draw] = useMovement(p);
+  const [setup, draw] = useSand(p);
 
   p.setup = setup;
   p.draw = draw;
