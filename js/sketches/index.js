@@ -1,17 +1,17 @@
-import { useColorFire } from './useColorFire';
-import { useLines } from './useLines';
-import { useMoire } from './useMoire';
-import { useWaves } from './useWaves';
-import { useWavesMoving } from './useWavesMoving';
-import { useMovement } from './useMovement';
-import { useSand } from './useSand';
+import { default as colorFire } from './colorFire';
+import { default as lines } from './lines';
+import { default as moire } from './moire';
+import { default as movement } from './movement';
+import { default as sand } from './sand';
+import { default as waves } from './waves';
+import { default as wavesMoving } from './wavesMoving';
 
 export {
-  useColorFire,
-  useLines,
-  useMoire,
-  useWaves,
-  useWavesMoving,
-  useMovement,
-  useSand,
-}
+  colorFire,
+  lines,
+  moire,
+  movement,
+  sand,
+  waves,
+  wavesMoving,
+};
