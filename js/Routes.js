@@ -4,6 +4,7 @@ import P5Wrapper from 'react-p5-wrapper';
 
 import {
   branch,
+  bubblegum,
   colorFire,
   // lines,
   moire,
@@ -15,6 +16,7 @@ import {
 
 export const ROUTE_MAP = [
   { name: 'branch', sketch: branch },
+  { name: 'bubblegum', sketch: bubblegum },
   { name: 'colorFire', sketch: colorFire },
   // { name: 'lines', sketch: lines },
   { name: 'moire', sketch: moire },
