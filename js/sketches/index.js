@@ -1,3 +1,4 @@
+import { default as branch } from './branch';
 import { default as colorFire } from './colorFire';
 import { default as lines } from './lines';
 import { default as moire } from './moire';
@@ -7,6 +8,7 @@ import { default as waves } from './waves';
 import { default as wavesMoving } from './wavesMoving';
 
 export {
+  branch,
   colorFire,
   lines,
   moire,

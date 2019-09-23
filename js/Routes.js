@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import P5Wrapper from 'react-p5-wrapper';
 
 import {
+  branch,
   colorFire,
-  lines,
+  // lines,
   moire,
   movement,
   sand,
@@ -13,6 +14,7 @@ import {
 } from './sketches';
 
 export const ROUTE_MAP = [
+  { name: 'branch', sketch: branch },
   { name: 'colorFire', sketch: colorFire },
   // { name: 'lines', sketch: lines },
   { name: 'moire', sketch: moire },
