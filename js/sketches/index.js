@@ -2,6 +2,7 @@ import { default as branch } from './branch';
 import { default as bubblegum } from './bubblegum';
 import { default as colorFire } from './colorFire';
 import { default as curve } from './curve';
+import { default as cutout } from './cutout';
 import { default as lines } from './lines';
 import { default as moire } from './moire';
 import { default as movement } from './movement';
@@ -14,6 +15,7 @@ export {
   bubblegum,
   colorFire,
   curve,
+  cutout,
   lines,
   moire,
   movement,
