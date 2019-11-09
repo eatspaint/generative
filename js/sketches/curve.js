@@ -11,6 +11,10 @@ export default (p) => {
   
   const drawCurve = ({ controlPoints, color }) => {
     p.fill(...color);
+    p.noFill();
+    p.stroke(255);
+    // p.stroke(...color);
+    p.strokeWeight(1);
     p.beginShape();
     
     let n = controlPoints.length;
@@ -18,7 +22,7 @@ export default (p) => {
     // draw the start
     let start = midpoint(controlPoints[n - 1][1], controlPoints[0][0])
     p.vertex(...start);
-  
+
     // iterate through controlPoints
     for (let i = 0; i < n; i++) {
       // get the control points for the curve "a"
@@ -99,9 +103,11 @@ export default (p) => {
   const rows = p.floor(windowHeight / (CONTROL_MAX_LENGTH * 2));
   const hOffset = ((windowWidth % (CONTROL_MAX_LENGTH * 2)) / 2) + CONTROL_MAX_LENGTH;
   const vOffset = ((windowHeight % (CONTROL_MAX_LENGTH * 2)) / 2) + CONTROL_MAX_LENGTH;
+  const BACKGROUND = 0;
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
+    p.background(BACKGROUND);
     p.translate(hOffset, vOffset);
 
     for (let x = 0; x < cols; x++) {
