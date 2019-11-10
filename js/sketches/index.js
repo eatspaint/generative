@@ -6,6 +6,7 @@ import { default as cutout } from './cutout';
 import { default as lines } from './lines';
 import { default as moire } from './moire';
 import { default as movement } from './movement';
+import { default as oil } from './oil';
 import { default as sand } from './sand';
 import { default as waves } from './waves';
 import { default as wavesMoving } from './wavesMoving';
@@ -19,6 +20,7 @@ export {
   lines,
   moire,
   movement,
+  oil,
   sand,
   waves,
   wavesMoving,
