@@ -2,7 +2,7 @@ module.exports = {
   entry: "./js/index.js",
   output: {
     path: __dirname,
-    filename: "bundle-v1.0.js",
+    filename: "bundle-v1.1.js",
   },
   module: {
     rules: [

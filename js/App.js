@@ -4,8 +4,8 @@ import Routes from './Routes';
 import Home from './Home';
 
 const App = () => (
-  <Router>
-    <Route path="/" exact component={Home} />
+  <Router baseName='/'>
+    <Route path='/' exact component={Home} />
     <Routes />
   </Router>
 );
