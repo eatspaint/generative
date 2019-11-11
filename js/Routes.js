@@ -13,6 +13,7 @@ import {
   movement,
   oil,
   sand,
+  towers,
   waves,
   wavesMoving,
 } from './sketches';
@@ -28,6 +29,7 @@ export const ROUTE_MAP = [
   { name: 'movement', sketch: movement },
   { name: 'oil', sketch: oil },
   { name: 'sand', sketch: sand },
+  { name: 'towers', sketch: towers },
   { name: 'waves', sketch: waves },
   { name: 'wavesMoving', sketch: wavesMoving },
 ];
