@@ -7,6 +7,7 @@ import { default as lines } from './lines';
 import { default as moire } from './moire';
 import { default as movement } from './movement';
 import { default as oil } from './oil';
+import { default as ooo } from './ooo';
 import { default as sand } from './sand';
 import { default as towers } from './towers';
 import { default as waves } from './waves';
@@ -22,6 +23,7 @@ export {
   moire,
   movement,
   oil,
+  ooo,
   sand,
   towers,
   waves,
