@@ -9,6 +9,7 @@ import { default as movement } from './movement';
 import { default as oil } from './oil';
 import { default as ooo } from './ooo';
 import { default as sand } from './sand';
+import { default as sins } from './sins';
 import { default as towers } from './towers';
 import { default as waves } from './waves';
 import { default as wavesMoving } from './wavesMoving';
@@ -25,6 +26,7 @@ export {
   oil,
   ooo,
   sand,
+  sins,
   towers,
   waves,
   wavesMoving,
