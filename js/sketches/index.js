@@ -1,5 +1,6 @@
 import { default as branch } from './branch';
 import { default as bubblegum } from './bubblegum';
+import { default as cells } from './cells';
 import { default as colorFire } from './colorFire';
 import { default as curve } from './curve';
 import { default as cutout } from './cutout';
@@ -19,6 +20,7 @@ import { default as wavesMoving } from './wavesMoving';
 export {
   branch,
   bubblegum,
+  cells,
   colorFire,
   curve,
   cutout,
