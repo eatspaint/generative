@@ -1,25 +1,46 @@
 import 'p5/lib/addons/p5.dom';
 
+const SPINE_OPACITY = 1 * 255; // opacity for spines
+const SPINE_WIDTH = 2; // width of a spine
+const RESOLUTION = 20; // Size of a "pixel"
+const SPINE_MULT = 0.5; // length of spines relative to pixel size
+const RADIUS = RESOLUTION * SPINE_MULT; // util value
+
 class Pixel {
-  constructor({x, y, color}) {
+  constructor({x, y, color, angle, spines}) {
     this.x = x;
     this.y = y;
     this.color = color;
-  }
+    this.angle = angle;
+    this.spines = spines;
+    this.rotStep = 360 / spines;
+  };
 
-  draw() {
+  drawSpine(p) {
+    p.line(0, 0, RADIUS, 0);
+  };
 
-  }
-}
+  draw(p) {
+    p.push();
+    // Set stroke to pixel color
+    p.stroke(this.color);
+    // Go to x/y origin for this pixel
+    p.translate(this.x, this.y);
+    // Rotate to starting angle based on lightness
+    p.rotate(this.angle + p.frameCount);
+    // Draw the first spine
+    this.drawSpine(p);
+    // Draw the remaining spines
+    for (let i = 0; i <= this.spines; i++) {
+      p.rotate(this.rotStep);
+      this.drawSpine(p);
+    }
+    p.pop();
+  };
+};
 
 export default (p) => {
-  const SPINE_OPACITY = 0.5 * 255; // opacity for spines
-  const SPINE_WIDTH = 2; // width of a spine
-  const RESOLUTION = 15; // Size of a "pixel"
-  const SPINE_MULT = 10; // length of spines relative to pixel size
-  const RADIUS = RESOLUTION * SPINE_MULT; // util value
-
-  let COLS;
+  let PIXELS;
   let SCALED_WIDTH;
   let SCALED_HEIGHT;
 
@@ -31,9 +52,9 @@ export default (p) => {
     const xSteps = scaledSteps(scaledWidth);
     const ySteps = scaledSteps(scaledHeight);
     // Get color data for every pixel per RESOLUTION
-    const cols = sampleImage({ img, xSteps, ySteps, scale });
+    const pixels = sampleImage({ img, xSteps, ySteps, scale });
 
-    COLS = cols;
+    PIXELS = pixels;
     SCALED_WIDTH = scaledWidth;
     SCALED_HEIGHT = scaledHeight;
   };
@@ -78,71 +99,30 @@ export default (p) => {
   const sampleImage = ({
     img, xSteps, ySteps, scale
   }) => {
-    const cols = [];
-    const pixels = [];
+    let pixels = [];
     for (let x = 0; x < xSteps; x++) {
-      let col = [];
       for (let y = 0; y < ySteps; y++) {
         let [r, g, b] = img.get(
           (x * RESOLUTION) * scale,
           (y * RESOLUTION) * scale,
         );
-        col.push({
-          color: p.color(r, g, b, SPINE_OPACITY),
-        });
-        // pixels.push(new Pixel({
-        //   x: x * RESOLUTION,
-        //   y: y * RESOLUTION,
-        //   color: p.color(r, g, b, SPINE_OPACITY)
-        // }));
+        let color = p.color(r, g, b, SPINE_OPACITY);
+        pixels.push(new Pixel({
+          color,
+          x: x * RESOLUTION,
+          y: y * RESOLUTION,
+          angle: p.map(p.lightness(color), 0, 255, 0, 360),
+          spines: Math.round(p.map(p.saturation(color), 0, 255, 1, 10)) + 1,
+        }));
       }
-      cols.push(col);
     };
-    // console.log(pixels);
-    return cols;
+    return pixels;
   }
 
-  // Rotate the cursor according to lightness of color
-  const rotateToLightness = (color) => {
-    // Calc starting rotation based on lightness
-    let rot = p.map(p.lightness(color), 0, 255, 0, 360);
-    // Set starting rotation
-    p.rotate(rot + p.frameCount);
-  };
-
-  // Determine number of spines according to saturation of color
-  const spinesForSaturation = (color) => (
-    p.map(p.saturation(color), 0, 255, 1, 10) + 1
-  );
-
-  // Draw a unit line "spine" for given length
-  const drawSpine = (length) => p.line(0, 0, length, 0);
-
   // Iterate across cols, draw for each value
-  const plotPixels = (cols) => {
-    cols.forEach((col, x) => {
-      col.forEach((cell, y) => {
-        p.push();
-        // Set stroke to pixel color
-        p.stroke(cell.color);
-        // Go to x/y origin for this pixel
-        p.translate(x * RESOLUTION, y * RESOLUTION);
-        // Rotate to starting angle based on lightness
-        rotateToLightness(cell.color);
-        // Calc number of spines based on saturation
-        let spines = spinesForSaturation(cell.color);
-        // Calc degrees per rotation step
-        let rotStep = 360 / spines;
-        // Draw the first spine
-        let spineLength = RADIUS;
-        drawSpine(spineLength);
-        // Draw the remaining spines
-        for (let i = 0; i <= spines; i++) {
-          p.rotate(rotStep);
-          drawSpine(spineLength);
-        }
-        p.pop();
-      });
+  const plotPixels = (pixels) => {
+    pixels.forEach((pixel) => {
+      pixel.draw(p);
     });
   };
 
@@ -154,7 +134,7 @@ export default (p) => {
     nudgeByHalfResolution();
     // Center the rendered image
     centerDrawing(SCALED_WIDTH, SCALED_HEIGHT);
-    plotPixels(COLS);
+    plotPixels(PIXELS);
     p.pop();
   };
 
@@ -175,12 +155,13 @@ export default (p) => {
     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
     p.frameRate(10);
     canvas.drop(gotFile);
+    p.text('drop an image into the browser', 10, 20)
   };
 
   p.draw = () => {
-    if (COLS) {
+    if (PIXELS) {
       drawImage();
-      p.noLoop();
+      // p.noLoop();
     }
   };
 };
