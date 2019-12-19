@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import P5Wrapper from 'react-p5-wrapper';
 
 import {
+  atmos,
   branch,
   bubblegum,
   cells,
@@ -25,6 +26,7 @@ import {
 } from './sketches';
 
 export const ROUTE_MAP = [
+  { name: 'atmos', sketch: atmos },
   { name: 'branch', sketch: branch },
   { name: 'bubblegum', sketch: bubblegum },
   { name: 'cells', sketch: cells },

@@ -1,3 +1,4 @@
+import { default as atmos } from './atmos';
 import { default as branch } from './branch';
 import { default as bubblegum } from './bubblegum';
 import { default as cells } from './cells';
@@ -19,6 +20,7 @@ import { default as waves } from './waves';
 import { default as wavesMoving } from './wavesMoving';
 
 export {
+  atmos,
   branch,
   bubblegum,
   cells,
