@@ -1,4 +1,4 @@
-import 'p5/lib/addons/p5.dom';
+// import 'p5/lib/addons/p5.dom';
 
 const SPINE_OPACITY = 1 * 255; // opacity for spines
 const SPINE_WIDTH = 2; // width of a spine
