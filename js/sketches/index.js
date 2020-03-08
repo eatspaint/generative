@@ -5,6 +5,7 @@ import { default as cells } from './cells';
 import { default as colorFire } from './colorFire';
 import { default as curve } from './curve';
 import { default as cutout } from './cutout';
+import { default as every } from './every';
 import { default as lines } from './lines';
 import { default as moire } from './moire';
 import { default as movement } from './movement';
@@ -27,6 +28,7 @@ export {
   colorFire,
   curve,
   cutout,
+  every,
   lines,
   moire,
   movement,
