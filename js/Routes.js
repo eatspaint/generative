@@ -23,6 +23,7 @@ import {
   sins,
   tiled,
   towers,
+  warp,
   waves,
   wavesMoving,
 } from './sketches';
@@ -48,6 +49,7 @@ export const ROUTE_MAP = [
   { name: 'sins', sketch: sins },
   { name: 'tiled', sketch: tiled },
   { name: 'towers', sketch: towers },
+  { name: 'warp', sketch: warp },
   { name: 'waves', sketch: waves },
   { name: 'wavesMoving', sketch: wavesMoving },
 ];

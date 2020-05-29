@@ -18,6 +18,7 @@ import { default as shift } from './shift';
 import { default as sins } from './sins';
 import { default as tiled } from './tiled';
 import { default as towers } from './towers';
+import { default as warp } from './warp';
 import { default as waves } from './waves';
 import { default as wavesMoving } from './wavesMoving';
 
@@ -42,6 +43,7 @@ export {
   sins,
   tiled,
   towers,
+  warp,
   waves,
   wavesMoving,
 };
