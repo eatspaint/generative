@@ -10,10 +10,23 @@ body {
   align-items: center;
 }
 
-canvas{
+canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.nav a {
+  padding: 6px;
 }

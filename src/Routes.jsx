@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import P5Wrapper from 'react-p5-wrapper';
+import { ReactP5Wrapper } from '@p5-wrapper/react';
 
 import {
   atmos,
@@ -59,7 +59,7 @@ const renderRoute = ({ name, sketch }) => (
     key={name}
     path={`/${name}`}
     render={
-      () => <P5Wrapper sketch={sketch}/>
+      () => <ReactP5Wrapper sketch={sketch}/>
     }
   />
 );
@@ -69,5 +69,10 @@ const Routes = () => (
     {ROUTE_MAP.map(route => renderRoute(route))}
   </>
 );
+
+export const routes = ROUTE_MAP.map(({ name, sketch }) => ({
+  element: <ReactP5Wrapper sketch={sketch}/>,
+  path: `/${name}`,
+}))
 
 export default Routes;

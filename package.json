@@ -1,29 +1,25 @@
 {
-  "name": "generative",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "eatspaint",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel": "^6.23.0",
-    "babel-loader": "^8.0.6",
-    "ccapture.js": "aceslowman/ccapture.js#npm-fix",
-    "p5": "^0.9.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-p5-wrapper": "^2.0.0",
-    "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1",
-    "styled-components": "^4.3.2",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
-  },
+  "name": "generative-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@p5-wrapper/react": "^4.3.2",
+    "ccapture.js": "aceslowman/ccapture.js#npm-fix",
+    "p5": "^1.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.1.0"
   }
 }
